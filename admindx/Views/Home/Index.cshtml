@@ -1,0 +1,34 @@
+﻿@using admindx.Models;
+@{
+    var usuario = Session["usuario"] as p_usuario;
+}
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="jumbotron">
+        <h1>IndexAI</h1>
+        <p class="lead">Sistema de indexación y control de documentos mediante lenguaje natural.</p>
+        @if (usuario == null)
+        {
+            <p>@Html.ActionLink("Login", "Login", "Login")</p>
+
+        }
+    </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Digitalización</h2>
+        <p>
+            proceso que permite mediante la aplicación de escáner, convertir la imagen contenida en un documento en papel en una imagen digital.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Indexación</h2>
+        <p>método de adquisición de información (desarrollo de información), mediante el cual los documentos se recopilan y clasifican en función de palabras clave. Posteriormente, se forma un índice que es similar a una biblioteca.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Consultas</h2>
+        <p>Busca y recopila información sobre los documentos durante el proceso de digitalización e indexación.</p>
+    </div>
+</div>

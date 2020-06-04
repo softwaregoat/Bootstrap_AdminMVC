@@ -1,0 +1,100 @@
+﻿@model IEnumerable<admindx.Models.p_proyecto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_proyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_proyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.extension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.meta_diaria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_reportes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_firma_entrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_firma_salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_servidor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nivel_ocr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_estado.activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_organizacion.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_proyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_proyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.extension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.meta_diaria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_salida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_reportes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_firma_entrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_firma_salida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_servidor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nivel_ocr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.p_estado.activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.p_organizacion.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

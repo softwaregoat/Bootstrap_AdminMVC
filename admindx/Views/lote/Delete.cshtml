@@ -1,0 +1,73 @@
+﻿@model admindx.Models.t_lote
+
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Borrar</h2>
+
+<h3>Seguro que desea eliminar este lote?</h3>
+<div>
+    <hr />
+    @Html.ValidationMessage("errorBorrar", new { @class = "text-danger" })
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_lote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_lote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_proyecto.nom_proyecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_proyecto.nom_proyecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_subdependencia.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_subdependencia.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_subserie.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_subserie.nombre)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

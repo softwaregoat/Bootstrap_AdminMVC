@@ -1,0 +1,119 @@
+﻿@model IEnumerable<admindx.Models.p_usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.identificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_estado.activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.superadmin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.web_admin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.web_consulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.loc_admin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.loc_index)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.loc_calidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.perfil.loc_consulta)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.identificacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombres)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.apellidos)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.clave)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.telefono)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.p_estado.activo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.superadmin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.web_admin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.web_consulta)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.loc_admin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.loc_index)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.loc_calidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.perfil.loc_consulta)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<admindx.Models.p_recurso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_recurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proc_ocr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proc_pdfa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.auditoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_pdf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_carpeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proc_hc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ruta_s3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_estado.activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_proyecto.nom_proyecto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_recurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proc_ocr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proc_pdfa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.auditoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_pdf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_carpeta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proc_hc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ruta_s3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.p_estado.activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.p_proyecto.nom_proyecto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

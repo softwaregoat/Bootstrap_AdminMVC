@@ -1,0 +1,115 @@
+﻿@model admindx.Models.p_proyecto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_proyecto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_proyecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_proyecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_proyecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_proyecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.extension)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.extension)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta_diaria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta_diaria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_reportes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_reportes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_firma_entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_firma_entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_firma_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_firma_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_servidor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_servidor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nivel_ocr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nivel_ocr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_estado.activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_estado.activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_organizacion.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_organizacion.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,75 @@
+﻿@model admindx.Models.p_tipodoc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_tipodoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.multiterceros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.multiterceros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.principal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.principal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.excluir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.excluir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_subserie.codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_subserie.codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

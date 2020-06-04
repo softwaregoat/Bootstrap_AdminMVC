@@ -1,0 +1,65 @@
+﻿@model admindx.Models.t_lote
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle Lote</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_lote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_lote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_proyecto.nom_proyecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_proyecto.nom_proyecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_subdependencia.cod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_subdependencia.cod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_subserie.codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_subserie.codigo)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("volver al listado", "Index")
+</p>

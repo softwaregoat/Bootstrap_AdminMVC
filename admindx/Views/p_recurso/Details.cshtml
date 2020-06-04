@@ -1,0 +1,99 @@
+﻿@model admindx.Models.p_recurso
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_recurso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_recurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_recurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proc_ocr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proc_ocr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proc_pdfa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proc_pdfa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.auditoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.auditoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_pdf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_pdf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_carpeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_carpeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proc_hc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proc_hc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta_s3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta_s3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_estado.activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_estado.activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_proyecto.nom_proyecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_proyecto.nom_proyecto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

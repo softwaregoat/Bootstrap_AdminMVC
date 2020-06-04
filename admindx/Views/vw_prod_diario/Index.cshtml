@@ -1,0 +1,122 @@
+﻿@model IEnumerable<admindx.Models.vw_prod_diario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Producción diaria</h4>
+@using (Html.BeginForm(null, null, new { @id = string.Empty }, FormMethod.Post, new { @id = "form_bdoc", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <p>
+            Buscar por Fecha: <input type="text" name="SearchString" value="@ViewBag.SearchString" />
+            <input type="submit" value="Busccar" class="btn btn-default" />
+            @if (ViewBag.tipo == "ExportarExcel")
+            {
+                <br>
+                @Html.ActionLink("Exportar información", "ExportExcel", new { fechaReporte = @ViewBag.SearchString }) <br>
+            }
+        </p>
+    </div>
+}
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nro_caja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nro_expediente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.f_asignacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.asignado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.f_realizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Realizado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hora)
+            </th>
+            <th>
+                N. Carpeta
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tomo)
+            </th>
+            <th>
+               Fol. Inicial
+            </th>
+            <th>
+                Fol. Final
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.folio_total)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_caja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_expediente)
+        </td>
+        <td>
+            @{
+                var asignado = string.Format("{0:00}/{1:00}/{2:00}", item.f_asignacion?.Day, item.f_asignacion?.Month, item.f_asignacion ?.Year);
+            }
+            @Html.DisplayFor(modelItem => asignado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asignado)
+        </td>
+        <td>
+            @{
+                var realizado = string.Format("{0:00}/{1:00}/{2:00}", item.f_realizado?.Day, item.f_realizado?.Month, item.f_realizado?.Year);
+            }
+            @Html.DisplayFor(modelItem => realizado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Realizado)
+        </td>
+        <td>
+            @{ 
+                var mihora = string.Format("{0:00}:{1:00}", item.hora?.Hours, item.hora?.Minutes);
+            }
+            @Html.DisplayFor(modelItem => mihora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_carpeta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tomo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.folio_inicial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.folio_final)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.registros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.folio_total)
+        </td>
+    </tr>
+        }
+
+    </table>

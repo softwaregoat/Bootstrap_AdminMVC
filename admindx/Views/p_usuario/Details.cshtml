@@ -1,0 +1,124 @@
+﻿@model admindx.Models.p_usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.p_estado.activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.p_estado.activo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.superadmin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.superadmin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.web_admin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.web_admin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.web_consulta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.web_consulta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.loc_admin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.loc_admin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.loc_index)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.loc_index)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.loc_calidad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.loc_calidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.perfil.loc_consulta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.perfil.loc_consulta)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

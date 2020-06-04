@@ -1,0 +1,58 @@
+﻿@model IEnumerable<admindx.Models.p_dependencia>
+
+@{
+    ViewBag.Title = "Dependecia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Index</h4>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.und_administrativa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_organizacion.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.und_administrativa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.p_organizacion.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

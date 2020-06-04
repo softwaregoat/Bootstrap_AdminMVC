@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gdocxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="p_dependencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="und_administrativa" Type="varchar" MaxLength="150" />
+    <Property Name="id_organizacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_estado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="activo" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_organizacion">
+    <Key>
+      <PropertyRef Name="id_empresa" />
+    </Key>
+    <Property Name="id_empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="activo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_proyecto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_proyecto" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_empresa" Type="int" Nullable="false" />
+    <Property Name="activo" Type="int" Nullable="false" />
+    <Property Name="ruta_proyecto" Type="varchar" MaxLength="255" />
+    <Property Name="extension" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="meta_diaria" Type="int" />
+  </EntityType>
+  <EntityType Name="p_recurso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_proyecto" Type="int" Nullable="false" />
+    <Property Name="nom_recurso" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="proc_ocr" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="proc_pdfa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="auditoria" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="ruta_pdf" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="nom_carpeta" Type="varchar" MaxLength="100" />
+    <Property Name="activo" Type="int" Nullable="false" />
+    <Property Name="proc_hc" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="ruta_s3" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="p_serie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="20" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_subdependencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_dependencia" Type="int" Nullable="false" />
+    <Property Name="cod" Type="varchar" MaxLength="15" />
+    <Property Name="nombre" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_subserie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_serie" Type="int" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="25" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_tipodoc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_subserie" Type="int" Nullable="false" />
+    <Property Name="cod" Type="varchar" MaxLength="10" />
+    <Property Name="nombre" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="img" Type="text" />
+    <Property Name="multiterceros" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_tipoitem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_tipo" Type="int" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="requerido" Type="int" Nullable="false" />
+    <Property Name="orden" Type="int" Nullable="false" />
+    <Property Name="activo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_tiporesp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_item" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="valor" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="vr_padre" Type="varchar" MaxLength="255" />
+    <Property Name="activo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="identificacion" Type="int" Nullable="false" />
+    <Property Name="nombres" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="apellidos" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="clave" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="id_dependencia" Type="int" Nullable="false" />
+    <Property Name="perfil" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="activo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="p_usuario_perfil">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="id_proyecto" Type="int" Nullable="false" />
+    <Property Name="superadmin" Type="int" Nullable="false" />
+    <Property Name="web_admin" Type="int" Nullable="false" />
+    <Property Name="web_consulta" Type="int" Nullable="false" />
+    <Property Name="loc_admin" Type="int" Nullable="false" />
+    <Property Name="loc_index" Type="int" Nullable="false" />
+    <Property Name="loc_calidad" Type="int" Nullable="false" />
+    <Property Name="loc_consulta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="t_borrar_archivos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ruta" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="nom_archivo" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="borrado" Type="nchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_carpeta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_lote" Type="int" />
+    <Property Name="nro_expediente" Type="varchar" MaxLength="50" />
+    <Property Name="nom_expediente" Type="varchar" MaxLength="1000" />
+    <Property Name="nro_caja" Type="varchar" MaxLength="50" />
+    <Property Name="nro_carpeta" Type="int" />
+    <Property Name="paginas" Type="int" />
+    <Property Name="fecha_expediente_ini" Type="datetime" />
+    <Property Name="fecha_expediente_fin" Type="datetime" />
+    <Property Name="total_folios" Type="int" />
+    <Property Name="id_tercero" Type="int" />
+    <Property Name="ejecucion" Type="int" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="idusr_asignado" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+  </EntityType>
+  <EntityType Name="t_carpeta_estado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_carpeta" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="fase" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="rechazado" Type="int" Nullable="false" />
+    <Property Name="fecha_estado" Type="datetime" Nullable="false" />
+    <Property Name="observacion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_documento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_carpeta" Type="int" Nullable="false" />
+    <Property Name="id_tipodoc" Type="int" />
+    <Property Name="pag_ini" Type="int" />
+    <Property Name="pag_fin" Type="int" />
+  </EntityType>
+  <EntityType Name="t_documento_tercero">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_documento" Type="int" Nullable="false" />
+    <Property Name="id_tercero" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_listpdf">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="directorio" Type="varchar" MaxLength="260" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tamanio" Type="bigint" Nullable="false" />
+    <Property Name="fecha_modificacion" Type="datetime" />
+    <Property Name="fecha_creacion" Type="datetime" />
+    <Property Name="fecha_cargue" Type="datetime" />
+    <Property Name="ancho" Type="int" />
+    <Property Name="alto" Type="int" />
+    <Property Name="dpix" Type="float" />
+    <Property Name="dpiy" Type="float" />
+    <Property Name="paginas" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="ocr" Type="nchar" MaxLength="2" />
+    <Property Name="pag_ancho" Type="float" />
+    <Property Name="pag_alto" Type="float" />
+    <Property Name="escala_gris" Type="nchar" MaxLength="2" />
+    <Property Name="firma" Type="int" />
+    <Property Name="firma_valida" Type="int" />
+    <Property Name="dpi" Type="float" />
+    <Property Name="modificado" Type="nchar" MaxLength="2" />
+    <Property Name="metadata" Type="nchar" MaxLength="2" />
+    <Property Name="pdfa" Type="nchar" MaxLength="2" />
+    <Property Name="repetido" Type="nchar" MaxLength="2" />
+    <Property Name="id_proyecto" Type="int" Nullable="false" />
+    <Property Name="msj_error" Type="text" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'gdocx.dbo.t_listpdf_asc_desc' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="t_listpdf_asc_desc">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="directorio" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="tamanio" />
+      <PropertyRef Name="paginas" />
+      <PropertyRef Name="id_proyecto" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="directorio" Type="varchar" MaxLength="260" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tamanio" Type="bigint" Nullable="false" />
+    <Property Name="fecha_modificacion" Type="datetime" />
+    <Property Name="fecha_creacion" Type="datetime" />
+    <Property Name="fecha_cargue" Type="datetime" />
+    <Property Name="ancho" Type="int" />
+    <Property Name="alto" Type="int" />
+    <Property Name="dpix" Type="float" />
+    <Property Name="dpiy" Type="float" />
+    <Property Name="paginas" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="ocr" Type="nchar" MaxLength="2" />
+    <Property Name="pag_ancho" Type="float" />
+    <Property Name="pag_alto" Type="float" />
+    <Property Name="escala_gris" Type="nchar" MaxLength="2" />
+    <Property Name="firma" Type="int" />
+    <Property Name="firma_valida" Type="int" />
+    <Property Name="dpi" Type="float" />
+    <Property Name="modificado" Type="nchar" MaxLength="2" />
+    <Property Name="metadata" Type="nchar" MaxLength="2" />
+    <Property Name="pdfa" Type="nchar" MaxLength="2" />
+    <Property Name="repetido" Type="nchar" MaxLength="2" />
+    <Property Name="id_proyecto" Type="int" Nullable="false" />
+    <Property Name="msj_error" Type="text" />
+  </EntityType>
+  <EntityType Name="t_lote">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_lote" Type="varchar" MaxLength="50" />
+    <Property Name="id_subdependencia" Type="int" />
+    <Property Name="id_subserie" Type="int" />
+    <Property Name="id_proyecto" Type="int" />
+    <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+    <Property Name="marco" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="t_lpdf_hc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="directorio" Type="varchar" MaxLength="260" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tamanio" Type="bigint" Nullable="false" />
+    <Property Name="fecha_modificacion" Type="datetime" />
+    <Property Name="fecha_creacion" Type="datetime" />
+    <Property Name="fecha_cargue" Type="datetime" />
+    <Property Name="ancho" Type="int" />
+    <Property Name="alto" Type="int" />
+    <Property Name="dpix" Type="float" />
+    <Property Name="dpiy" Type="float" />
+    <Property Name="paginas" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="ocr" Type="nchar" MaxLength="2" />
+    <Property Name="pag_ancho" Type="float" />
+    <Property Name="pag_alto" Type="float" />
+    <Property Name="escala_gris" Type="nchar" MaxLength="2" />
+    <Property Name="firma" Type="int" />
+    <Property Name="firma_valida" Type="int" />
+    <Property Name="dpi" Type="float" />
+    <Property Name="modificado" Type="nchar" MaxLength="2" />
+    <Property Name="metadata" Type="nchar" MaxLength="2" />
+    <Property Name="pdfa" Type="nchar" MaxLength="2" />
+    <Property Name="repetido" Type="nchar" MaxLength="2" />
+    <Property Name="id_proyecto" Type="int" Nullable="false" />
+    <Property Name="msj_error" Type="text" />
+    <Property Name="s3" Type="varchar" MaxLength="255" />
+    <Property Name="textract" Type="varchar" MaxLength="512" />
+    <Property Name="nro_pag_hc" Type="int" />
+  </EntityType>
+  <EntityType Name="t_metadata">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="direccion_admin" Type="nchar" MaxLength="150" />
+    <Property Name="oficina" Type="nchar" MaxLength="200" />
+    <Property Name="serie" Type="nchar" MaxLength="100" />
+    <Property Name="subserie" Type="nchar" MaxLength="150" />
+    <Property Name="identificador" Type="int" />
+    <Property Name="expediente" Type="nchar" MaxLength="120" />
+    <Property Name="tomo" Type="nchar" MaxLength="10" />
+    <Property Name="fecha_inicial" Type="date" />
+    <Property Name="fecha_final" Type="date" />
+    <Property Name="folio_ini" Type="int" />
+    <Property Name="folio_fin" Type="int" />
+    <Property Name="imagenes" Type="int" />
+    <Property Name="observaciones" Type="nchar" MaxLength="300" />
+    <Property Name="notas" Type="nchar" MaxLength="200" />
+    <Property Name="captura" Type="date" />
+    <Property Name="calidad" Type="date" />
+    <Property Name="nom_archivo" Type="nchar" MaxLength="255" Nullable="false" />
+    <Property Name="id_recurso" Type="int" Nullable="false" />
+    <Property Name="fecha_ingreso" Type="date" />
+    <Property Name="ruta_final" Type="varchar" MaxLength="255" />
+    <Property Name="directorio" Type="varchar" MaxLength="255" />
+    <Property Name="archivo_salida" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_tercero">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="identificacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombres" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="tipo_documento" Type="nchar" MaxLength="40" />
+    <Property Name="nro_tarjeta" Type="int" />
+    <Property Name="tipo_tercero" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="lugar_exp" Type="nchar" MaxLength="60" />
+    <Property Name="apellidos" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <Association Name="FK_p_dependencia_p_organizacion">
+    <End Role="p_organizacion" Type="Self.p_organizacion" Multiplicity="1" />
+    <End Role="p_dependencia" Type="Self.p_dependencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_organizacion">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="p_dependencia">
+        <PropertyRef Name="id_organizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_subdependencia_p_dependencia">
+    <End Role="p_dependencia" Type="Self.p_dependencia" Multiplicity="1" />
+    <End Role="p_subdependencia" Type="Self.p_subdependencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_dependencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_subdependencia">
+        <PropertyRef Name="id_dependencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_subserie_p_serie">
+    <End Role="p_serie" Type="Self.p_serie" Multiplicity="1" />
+    <End Role="p_subserie" Type="Self.p_subserie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_serie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_subserie">
+        <PropertyRef Name="id_serie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_tipodoc_p_subserie">
+    <End Role="p_subserie" Type="Self.p_subserie" Multiplicity="1" />
+    <End Role="p_tipodoc" Type="Self.p_tipodoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_subserie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_tipodoc">
+        <PropertyRef Name="id_subserie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_tipoitem_p_tipodoc">
+    <End Role="p_tipodoc" Type="Self.p_tipodoc" Multiplicity="1" />
+    <End Role="p_tipoitem" Type="Self.p_tipoitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_tipodoc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_tipoitem">
+        <PropertyRef Name="id_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_tiporesp_p_tipoitem">
+    <End Role="p_tipoitem" Type="Self.p_tipoitem" Multiplicity="1" />
+    <End Role="p_tiporesp" Type="Self.p_tiporesp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_tipoitem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_tiporesp">
+        <PropertyRef Name="id_item" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_usuario_perfil_p_proyecto">
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="1" />
+    <End Role="p_usuario_perfil" Type="Self.p_usuario_perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_proyecto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_usuario_perfil">
+        <PropertyRef Name="id_proyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_p_usuario_perfil_p_usuario">
+    <End Role="p_usuario" Type="Self.p_usuario" Multiplicity="1" />
+    <End Role="p_usuario_perfil" Type="Self.p_usuario_perfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_usuario_perfil">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_carpeta_estado_t_carpeta_estado">
+    <End Role="t_carpeta" Type="Self.t_carpeta" Multiplicity="1" />
+    <End Role="t_carpeta_estado" Type="Self.t_carpeta_estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_carpeta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_carpeta_estado">
+        <PropertyRef Name="id_carpeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_carpeta_p_tercero">
+    <End Role="t_tercero" Type="Self.t_tercero" Multiplicity="0..1" />
+    <End Role="t_carpeta" Type="Self.t_carpeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_tercero">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_carpeta">
+        <PropertyRef Name="id_tercero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_carpeta_t_lote">
+    <End Role="t_lote" Type="Self.t_lote" Multiplicity="0..1" />
+    <End Role="t_carpeta" Type="Self.t_carpeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_lote">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_carpeta">
+        <PropertyRef Name="id_lote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_documento_p_tipodoc">
+    <End Role="p_tipodoc" Type="Self.p_tipodoc" Multiplicity="0..1" />
+    <End Role="t_documento" Type="Self.t_documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_tipodoc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_documento">
+        <PropertyRef Name="id_tipodoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_documento_t_carpeta">
+    <End Role="t_carpeta" Type="Self.t_carpeta" Multiplicity="1" />
+    <End Role="t_documento" Type="Self.t_documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_carpeta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_documento">
+        <PropertyRef Name="id_carpeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_documento_tercero_t_documento">
+    <End Role="t_documento" Type="Self.t_documento" Multiplicity="1" />
+    <End Role="t_documento_tercero" Type="Self.t_documento_tercero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_documento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_documento_tercero">
+        <PropertyRef Name="id_documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_documento_tercero_t_tercero">
+    <End Role="t_tercero" Type="Self.t_tercero" Multiplicity="1" />
+    <End Role="t_documento_tercero" Type="Self.t_documento_tercero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_tercero">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_documento_tercero">
+        <PropertyRef Name="id_tercero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_lote_p_proyecto">
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="0..1" />
+    <End Role="t_lote" Type="Self.t_lote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_proyecto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_lote">
+        <PropertyRef Name="id_proyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_lote_p_subdependencia">
+    <End Role="p_subdependencia" Type="Self.p_subdependencia" Multiplicity="0..1" />
+    <End Role="t_lote" Type="Self.t_lote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_subdependencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_lote">
+        <PropertyRef Name="id_subdependencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_lote_p_subserie">
+    <End Role="p_subserie" Type="Self.p_subserie" Multiplicity="0..1" />
+    <End Role="t_lote" Type="Self.t_lote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_subserie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_lote">
+        <PropertyRef Name="id_subserie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_lpdf_hc_t_lpdf_hc">
+    <End Role="t_lpdf_hc" Type="Self.t_lpdf_hc" Multiplicity="1" />
+    <End Role="t_lpdf_hc1" Type="Self.t_lpdf_hc" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_lpdf_hc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_lpdf_hc1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_metadata_t_metadata">
+    <End Role="t_metadata" Type="Self.t_metadata" Multiplicity="1" />
+    <End Role="t_metadata1" Type="Self.t_metadata" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_metadata">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_metadata1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_proyecto_FK">
+    <End Role="p_organizacion" Type="Self.p_organizacion" Multiplicity="1" />
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_organizacion">
+        <PropertyRef Name="id_empresa" />
+      </Principal>
+      <Dependent Role="p_proyecto">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_proyecto_FK_1">
+    <End Role="p_estado" Type="Self.p_estado" Multiplicity="1" />
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_estado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_proyecto">
+        <PropertyRef Name="activo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_recurso_FK">
+    <End Role="p_estado" Type="Self.p_estado" Multiplicity="1" />
+    <End Role="p_recurso" Type="Self.p_recurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_estado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_recurso">
+        <PropertyRef Name="activo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="p_usuario_FK">
+    <End Role="p_estado" Type="Self.p_estado" Multiplicity="1" />
+    <End Role="p_usuario" Type="Self.p_usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_estado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_usuario">
+        <PropertyRef Name="activo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="recurso_FK">
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="1" />
+    <End Role="p_recurso" Type="Self.p_recurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_proyecto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="p_recurso">
+        <PropertyRef Name="id_proyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="t_listpdf_FK">
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="1" />
+    <End Role="t_listpdf" Type="Self.t_listpdf" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_proyecto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_listpdf">
+        <PropertyRef Name="id_proyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="t_listpdf_hc_FK">
+    <End Role="p_proyecto" Type="Self.p_proyecto" Multiplicity="1" />
+    <End Role="t_lpdf_hc" Type="Self.t_lpdf_hc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="p_proyecto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="t_lpdf_hc">
+        <PropertyRef Name="id_proyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gdocxModelStoreContainer">
+    <EntitySet Name="p_dependencia" EntityType="Self.p_dependencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_estado" EntityType="Self.p_estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_organizacion" EntityType="Self.p_organizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_proyecto" EntityType="Self.p_proyecto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_recurso" EntityType="Self.p_recurso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_serie" EntityType="Self.p_serie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_subdependencia" EntityType="Self.p_subdependencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_subserie" EntityType="Self.p_subserie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_tipodoc" EntityType="Self.p_tipodoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_tipoitem" EntityType="Self.p_tipoitem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_tiporesp" EntityType="Self.p_tiporesp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_usuario" EntityType="Self.p_usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="p_usuario_perfil" EntityType="Self.p_usuario_perfil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_borrar_archivos" EntityType="Self.t_borrar_archivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_carpeta" EntityType="Self.t_carpeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_carpeta_estado" EntityType="Self.t_carpeta_estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_documento" EntityType="Self.t_documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_documento_tercero" EntityType="Self.t_documento_tercero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_listpdf" EntityType="Self.t_listpdf" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_lote" EntityType="Self.t_lote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_lpdf_hc" EntityType="Self.t_lpdf_hc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_metadata" EntityType="Self.t_metadata" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_tercero" EntityType="Self.t_tercero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_listpdf_asc_desc" EntityType="Self.t_listpdf_asc_desc" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [t_listpdf_asc_desc].[id] AS [id], 
+    [t_listpdf_asc_desc].[directorio] AS [directorio], 
+    [t_listpdf_asc_desc].[nombre] AS [nombre], 
+    [t_listpdf_asc_desc].[tamanio] AS [tamanio], 
+    [t_listpdf_asc_desc].[fecha_modificacion] AS [fecha_modificacion], 
+    [t_listpdf_asc_desc].[fecha_creacion] AS [fecha_creacion], 
+    [t_listpdf_asc_desc].[fecha_cargue] AS [fecha_cargue], 
+    [t_listpdf_asc_desc].[ancho] AS [ancho], 
+    [t_listpdf_asc_desc].[alto] AS [alto], 
+    [t_listpdf_asc_desc].[dpix] AS [dpix], 
+    [t_listpdf_asc_desc].[dpiy] AS [dpiy], 
+    [t_listpdf_asc_desc].[paginas] AS [paginas], 
+    [t_listpdf_asc_desc].[id_usuario] AS [id_usuario], 
+    [t_listpdf_asc_desc].[ocr] AS [ocr], 
+    [t_listpdf_asc_desc].[pag_ancho] AS [pag_ancho], 
+    [t_listpdf_asc_desc].[pag_alto] AS [pag_alto], 
+    [t_listpdf_asc_desc].[escala_gris] AS [escala_gris], 
+    [t_listpdf_asc_desc].[firma] AS [firma], 
+    [t_listpdf_asc_desc].[firma_valida] AS [firma_valida], 
+    [t_listpdf_asc_desc].[dpi] AS [dpi], 
+    [t_listpdf_asc_desc].[modificado] AS [modificado], 
+    [t_listpdf_asc_desc].[metadata] AS [metadata], 
+    [t_listpdf_asc_desc].[pdfa] AS [pdfa], 
+    [t_listpdf_asc_desc].[repetido] AS [repetido], 
+    [t_listpdf_asc_desc].[id_proyecto] AS [id_proyecto], 
+    [t_listpdf_asc_desc].[msj_error] AS [msj_error]
+    FROM [dbo].[t_listpdf_asc_desc] AS [t_listpdf_asc_desc]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_p_dependencia_p_organizacion" Association="Self.FK_p_dependencia_p_organizacion">
+      <End Role="p_organizacion" EntitySet="p_organizacion" />
+      <End Role="p_dependencia" EntitySet="p_dependencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_subdependencia_p_dependencia" Association="Self.FK_p_subdependencia_p_dependencia">
+      <End Role="p_dependencia" EntitySet="p_dependencia" />
+      <End Role="p_subdependencia" EntitySet="p_subdependencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_subserie_p_serie" Association="Self.FK_p_subserie_p_serie">
+      <End Role="p_serie" EntitySet="p_serie" />
+      <End Role="p_subserie" EntitySet="p_subserie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_tipodoc_p_subserie" Association="Self.FK_p_tipodoc_p_subserie">
+      <End Role="p_subserie" EntitySet="p_subserie" />
+      <End Role="p_tipodoc" EntitySet="p_tipodoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_tipoitem_p_tipodoc" Association="Self.FK_p_tipoitem_p_tipodoc">
+      <End Role="p_tipodoc" EntitySet="p_tipodoc" />
+      <End Role="p_tipoitem" EntitySet="p_tipoitem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_tiporesp_p_tipoitem" Association="Self.FK_p_tiporesp_p_tipoitem">
+      <End Role="p_tipoitem" EntitySet="p_tipoitem" />
+      <End Role="p_tiporesp" EntitySet="p_tiporesp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_usuario_perfil_p_proyecto" Association="Self.FK_p_usuario_perfil_p_proyecto">
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+      <End Role="p_usuario_perfil" EntitySet="p_usuario_perfil" />
+    </AssociationSet>
+    <AssociationSet Name="FK_p_usuario_perfil_p_usuario" Association="Self.FK_p_usuario_perfil_p_usuario">
+      <End Role="p_usuario" EntitySet="p_usuario" />
+      <End Role="p_usuario_perfil" EntitySet="p_usuario_perfil" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_carpeta_estado_t_carpeta_estado" Association="Self.FK_t_carpeta_estado_t_carpeta_estado">
+      <End Role="t_carpeta" EntitySet="t_carpeta" />
+      <End Role="t_carpeta_estado" EntitySet="t_carpeta_estado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_carpeta_p_tercero" Association="Self.FK_t_carpeta_p_tercero">
+      <End Role="t_tercero" EntitySet="t_tercero" />
+      <End Role="t_carpeta" EntitySet="t_carpeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_carpeta_t_lote" Association="Self.FK_t_carpeta_t_lote">
+      <End Role="t_lote" EntitySet="t_lote" />
+      <End Role="t_carpeta" EntitySet="t_carpeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_documento_p_tipodoc" Association="Self.FK_t_documento_p_tipodoc">
+      <End Role="p_tipodoc" EntitySet="p_tipodoc" />
+      <End Role="t_documento" EntitySet="t_documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_documento_t_carpeta" Association="Self.FK_t_documento_t_carpeta">
+      <End Role="t_carpeta" EntitySet="t_carpeta" />
+      <End Role="t_documento" EntitySet="t_documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_documento_tercero_t_documento" Association="Self.FK_t_documento_tercero_t_documento">
+      <End Role="t_documento" EntitySet="t_documento" />
+      <End Role="t_documento_tercero" EntitySet="t_documento_tercero" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_documento_tercero_t_tercero" Association="Self.FK_t_documento_tercero_t_tercero">
+      <End Role="t_tercero" EntitySet="t_tercero" />
+      <End Role="t_documento_tercero" EntitySet="t_documento_tercero" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_lote_p_proyecto" Association="Self.FK_t_lote_p_proyecto">
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+      <End Role="t_lote" EntitySet="t_lote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_lote_p_subdependencia" Association="Self.FK_t_lote_p_subdependencia">
+      <End Role="p_subdependencia" EntitySet="p_subdependencia" />
+      <End Role="t_lote" EntitySet="t_lote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_lote_p_subserie" Association="Self.FK_t_lote_p_subserie">
+      <End Role="p_subserie" EntitySet="p_subserie" />
+      <End Role="t_lote" EntitySet="t_lote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_lpdf_hc_t_lpdf_hc" Association="Self.FK_t_lpdf_hc_t_lpdf_hc">
+      <End Role="t_lpdf_hc" EntitySet="t_lpdf_hc" />
+      <End Role="t_lpdf_hc1" EntitySet="t_lpdf_hc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_metadata_t_metadata" Association="Self.FK_t_metadata_t_metadata">
+      <End Role="t_metadata" EntitySet="t_metadata" />
+      <End Role="t_metadata1" EntitySet="t_metadata" />
+    </AssociationSet>
+    <AssociationSet Name="p_proyecto_FK" Association="Self.p_proyecto_FK">
+      <End Role="p_organizacion" EntitySet="p_organizacion" />
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="p_proyecto_FK_1" Association="Self.p_proyecto_FK_1">
+      <End Role="p_estado" EntitySet="p_estado" />
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="p_recurso_FK" Association="Self.p_recurso_FK">
+      <End Role="p_estado" EntitySet="p_estado" />
+      <End Role="p_recurso" EntitySet="p_recurso" />
+    </AssociationSet>
+    <AssociationSet Name="p_usuario_FK" Association="Self.p_usuario_FK">
+      <End Role="p_estado" EntitySet="p_estado" />
+      <End Role="p_usuario" EntitySet="p_usuario" />
+    </AssociationSet>
+    <AssociationSet Name="recurso_FK" Association="Self.recurso_FK">
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+      <End Role="p_recurso" EntitySet="p_recurso" />
+    </AssociationSet>
+    <AssociationSet Name="t_listpdf_FK" Association="Self.t_listpdf_FK">
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+      <End Role="t_listpdf" EntitySet="t_listpdf" />
+    </AssociationSet>
+    <AssociationSet Name="t_listpdf_hc_FK" Association="Self.t_listpdf_hc_FK">
+      <End Role="p_proyecto" EntitySet="p_proyecto" />
+      <End Role="t_lpdf_hc" EntitySet="t_lpdf_hc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

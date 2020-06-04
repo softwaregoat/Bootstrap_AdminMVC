@@ -1,0 +1,64 @@
+﻿@model IEnumerable<admindx.Models.t_lote>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lotes</h2>
+
+<p>
+    @Html.ActionLink("Cargar Lote", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.p_proyecto.nom_proyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_lote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_subdependencia.cod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.p_subserie.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_proyecto.nom_proyecto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom_lote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_subdependencia.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p_subserie.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_ingreso)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>
