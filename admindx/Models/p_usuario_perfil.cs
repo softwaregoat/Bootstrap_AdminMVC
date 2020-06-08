@@ -11,9 +11,16 @@ namespace admindx.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class p_usuario_perfil
     {
+        private gdocxEntities db = new gdocxEntities();
+        public p_usuario_perfil()
+        {
+            this.id_usuarios = this.db.p_usuario.Select(p => p.id).ToList();
+            this.id_proyectos = this.db.p_proyecto.Select(p => p.id).ToList();
+        }
         public int id { get; set; }
         public int id_usuario { get; set; }
         public int id_proyecto { get; set; }
@@ -25,7 +32,8 @@ namespace admindx.Models
         public int loc_calidad { get; set; }
         public int loc_consulta { get; set; }
         public int telemetria { get; set; }
-    
+        public IEnumerable<int> id_usuarios { get; set; }
+        public IEnumerable<int> id_proyectos { get; set; }
         public virtual p_proyecto p_proyecto { get; set; }
         public virtual p_usuario p_usuario { get; set; }
     }

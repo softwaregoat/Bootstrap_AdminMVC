@@ -41,6 +41,25 @@ namespace admindx.Controllers
             user.perfil = perfile;
             return View(user);
         }
+        // GET: p_usuario/Details/5
+        public ActionResult DetailsPerfil(int id)
+        {
+            return RedirectToAction("Details", "p_usuario_perfil", new { id = id });
+        }
+        public ActionResult CreatePerfil()
+        {
+            return RedirectToAction("Create", "p_usuario_perfil");
+        }
+        // GET: p_usuario/Details/5
+        public ActionResult EditPerfil(int id)
+        {
+            return RedirectToAction("Edit", "p_usuario_perfil", new { id = id });
+        }
+        // GET: p_usuario/Details/5
+        public ActionResult DeletePerfil(int id)
+        {
+            return RedirectToAction("Delete", "p_usuario_perfil", new {id = id});
+        }
 
         // GET: p_usuario/Create
         public ActionResult Create()

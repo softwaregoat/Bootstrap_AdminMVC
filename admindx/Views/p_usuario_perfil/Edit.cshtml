@@ -1,0 +1,217 @@
+﻿@model admindx.Models.p_usuario_perfil
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>p_usuario_perfil</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.id_usuario, "id_usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="id_usuario" name="id_usuario">
+                    @foreach (var item in Model.id_usuarios)
+                    {
+                        if (item == Model.id_usuario)
+                        {
+                            <option value="@item" selected>@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.id_proyecto, "id_proyecto", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="id_proyecto" name="id_proyecto">
+                    @foreach (var item in Model.id_proyectos)
+                    {
+                        if (item == Model.id_proyecto)
+                        {
+                            <option value="@item" selected>@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.superadmin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="superadmin" name="superadmin">
+                    @if (1 == Model.superadmin)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.web_admin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="web_admin" name="web_admin">
+                    @if (1 == Model.web_admin)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.web_consulta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="web_consulta" name="web_consulta">
+                    @if (1 == Model.web_consulta)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.loc_admin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="loc_admin" name="loc_admin">
+                    @if (1 == Model.loc_admin)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.loc_index, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="loc_index" name="loc_index">
+                    @if (1 == Model.loc_index)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.loc_calidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="loc_calidad" name="loc_calidad">
+                    @if (1 == Model.loc_calidad)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.loc_consulta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="loc_consulta" name="loc_consulta">
+                    @if (1 == Model.loc_consulta)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.telemetria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="telemetria" name="telemetria">
+                    @if (1 == Model.telemetria)
+                    {
+                        <option value="1" selected>SI</option>
+                        <option value="0">NO</option>
+                    }
+                    else
+                    {
+                        <option value="1">SI</option>
+                        <option value="0" selected>NO</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

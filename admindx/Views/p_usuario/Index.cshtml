@@ -10,110 +10,209 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-responsive">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.identificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apellidos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.clave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.p_estado.activo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.superadmin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.web_admin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.web_consulta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.loc_admin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.loc_index)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.loc_calidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.perfil.loc_consulta)
-        </th>
+<table class="table table-bordered table-responsive table-hover" id="user" style="overflow:scroll;height:300px;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.p_estado.activo)
+            </th>
 
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.identificacion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.nombres)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.apellidos)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.clave)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.telefono)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.usuario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.p_estado.activo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.superadmin)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.web_admin)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.web_consulta)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.loc_admin)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.loc_index)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.loc_calidad)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.perfil.loc_consulta)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id })
-    </td>
-</tr>
-}
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-id="@item.id">
+                <td>
+                    @Html.DisplayFor(modelItem => item.identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clave)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p_estado.activo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+Perfil
+<table class="table table-bordered table-responsive" id="perfil" style="overflow:scroll;height:300px;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                Perfil ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.superadmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.web_admin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.web_consulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.loc_admin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.loc_index)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.loc_calidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.perfil.loc_consulta)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr data-id="@item.id" data-perfil-id="@item.perfil.id">
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.perfil.id)
+            </td>
+            <td>
+                @if (1 == item.perfil.superadmin)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (1 == item.perfil.web_admin)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (1 == item.perfil.web_consulta)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (1 == item.perfil.loc_admin)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (1 == item.perfil.loc_index)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (1 == item.perfil.loc_calidad)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @if (1 == item.perfil.loc_consulta)
+                {
+                    <p>SI</p>
+                }
+                else
+                {
+                    <p>NO</p>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditPerfil", new { id = item.perfil.id }) |
+                @Html.ActionLink("Details", "DetailsPerfil", new { id = item.perfil.id }) |
+                @Html.ActionLink("Delete", "DeletePerfil", new { id = item.perfil.id })
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#user tbody tr').click(function () {
+                var id = $(this).data('id');
+                $('#perfil tbody tr').filter(function () {
+                    $(this).toggle($(this).data('id') == id);
+                });
+            });
+        });
+    </script>
+}

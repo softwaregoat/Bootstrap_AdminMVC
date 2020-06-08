@@ -1,0 +1,138 @@
+﻿@model admindx.Models.p_usuario_perfil
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>p_usuario_perfil</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.superadmin)
+        </dt>
+
+        <dd>
+            @if (1 == Model.superadmin)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.web_admin)
+        </dt>
+
+        <dd>
+            @if (1 == Model.web_admin)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.web_consulta)
+        </dt>
+
+        <dd>
+            @if (1 == Model.web_consulta)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loc_admin)
+        </dt>
+
+        <dd>
+            @if (1 == Model.loc_admin)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loc_index)
+        </dt>
+
+        <dd>
+            @if (1 == Model.loc_index)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loc_calidad)
+        </dt>
+
+        <dd>
+            @if (1 == Model.loc_calidad)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loc_consulta)
+        </dt>
+
+        <dd>
+            @if (1 == Model.loc_consulta)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telemetria)
+        </dt>
+
+        <dd>
+            @if (1 == Model.telemetria)
+            {
+                <p>SI</p>
+            }
+            else
+            {
+                <p>NO</p>
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

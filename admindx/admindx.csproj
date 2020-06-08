@@ -152,6 +152,7 @@
     <Compile Include="Controllers\p_subserieController.cs" />
     <Compile Include="Controllers\p_tipodocController.cs" />
     <Compile Include="Controllers\p_usuarioController.cs" />
+    <Compile Include="Controllers\p_usuario_perfilController.cs" />
     <Compile Include="Controllers\usuario_perfilController.cs" />
     <Compile Include="Controllers\vw_prod_diarioController.cs" />
     <Compile Include="gdperfil.cs" />
@@ -2288,6 +2289,10 @@
     <Content Include="Views\p_tipodoc\Create.cshtml" />
     <Content Include="Views\p_tipodoc\Edit.cshtml" />
     <Content Include="Views\p_tipodoc\Delete.cshtml" />
+    <Content Include="Views\p_usuario_perfil\Details.cshtml" />
+    <Content Include="Views\p_usuario_perfil\Create.cshtml" />
+    <Content Include="Views\p_usuario_perfil\Edit.cshtml" />
+    <Content Include="Views\p_usuario_perfil\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
